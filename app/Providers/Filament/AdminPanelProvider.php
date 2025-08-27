@@ -1,24 +1,25 @@
 <?php
 namespace App\Providers\Filament;
 
-use BezhanSalleh\FilamentShield\FilamentShieldPlugin;
-use Filament\Http\Middleware\Authenticate;
-use Filament\Http\Middleware\DisableBladeIconComponents;
-use Filament\Http\Middleware\DispatchServingFilamentEvent;
-use Filament\Navigation\NavigationGroup;
 use Filament\Panel;
 use Filament\PanelProvider;
+use Webkul\Support\PluginManager;
 use Filament\Support\Colors\Color;
-use Filament\Support\Enums\MaxWidth;
 use Hasnayeen\Themes\ThemesPlugin;
-use Illuminate\Cookie\Middleware\AddQueuedCookiesToResponse;
+use Filament\Support\Enums\MaxWidth;
+use Filament\Navigation\NavigationGroup;
+use Filament\Http\Middleware\Authenticate;
+use Jeffgreco13\FilamentBreezy\BreezyCore;
+use Illuminate\Session\Middleware\StartSession;
 use Illuminate\Cookie\Middleware\EncryptCookies;
-use Illuminate\Foundation\Http\Middleware\VerifyCsrfToken;
+use BezhanSalleh\FilamentShield\FilamentShieldPlugin;
 use Illuminate\Routing\Middleware\SubstituteBindings;
 use Illuminate\Session\Middleware\AuthenticateSession;
-use Illuminate\Session\Middleware\StartSession;
 use Illuminate\View\Middleware\ShareErrorsFromSession;
-use Webkul\Support\PluginManager;
+use Filament\Http\Middleware\DisableBladeIconComponents;
+use Filament\Http\Middleware\DispatchServingFilamentEvent;
+use Illuminate\Foundation\Http\Middleware\VerifyCsrfToken;
+use Illuminate\Cookie\Middleware\AddQueuedCookiesToResponse;
 
 class AdminPanelProvider extends PanelProvider
 {
@@ -32,12 +33,12 @@ class AdminPanelProvider extends PanelProvider
             ->path('admin')
             ->login()
             ->favicon(asset('images/favicon.ico'))
-            ->brandLogo(asset('images/Laravel-Logo.png'))
-            // ->darkModeBrandLogo(asset('images/logo-dark.svg'))
-            ->brandLogoHeight('4rem')
+            ->brandLogo(asset('images/logo-light.svg'))
+            ->darkModeBrandLogo(asset('images/logo-dark.svg'))
+            ->brandLogoHeight('2rem')
             ->passwordReset()
             ->emailVerification()
-            // ->profile()
+            ->profile(isSimple: true)
             ->colors([
                 'primary' => Color::Blue,
             ])
@@ -55,20 +56,20 @@ class AdminPanelProvider extends PanelProvider
                 FilamentShieldPlugin::make()
                     ->gridColumns([
                         'default' => 1,
-                        'sm'      => 2,
-                        'lg'      => 3,
+                        'sm' => 2,
+                        'lg' => 3,
                         // 'xl'      => 3,
                     ])
                     ->sectionColumnSpan(1)
                     ->checkboxListColumns([
                         'default' => 1,
-                        'sm'      => 2,
-                        'lg'      => 3,
+                        'sm' => 2,
+                        'lg' => 3,
                         // 'xl'      => 3,
                     ])
                     ->resourceCheckboxListColumns([
                         'default' => 1,
-                        'sm'      => 2,
+                        'sm' => 2,
                     ]),
                 PluginManager::make(),
                 ThemesPlugin::make(),

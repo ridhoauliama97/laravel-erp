@@ -29,10 +29,10 @@ class CustomerPanelProvider extends PanelProvider
             ->registration()
             ->profile(isSimple: false)
             ->favicon(asset('images/favicon.ico'))
-            ->brandLogo(asset('images/Laravel-Logo.png'))
-            // ->brandLogo(asset('images/logo-light.svg'))
+            ->brandLogo(asset('images/logo-dark.svg'))
+            ->brandLogo(asset('images/logo-light.svg'))
             ->darkMode(false)
-            ->brandLogoHeight('3rem')
+            ->brandLogoHeight('2rem')
             ->colors([
                 'primary' => Color::Blue,
             ])
